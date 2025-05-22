@@ -1,8 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.Api", "ToranjQ.Api\ToranjQ.Api.csproj", "{FE9842C5-A767-4D21-9809-CB202EACDAC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.App", "ToranjQ.App\ToranjQ.App.csproj", "{CF450D78-020E-4234-BB18-A31295BEB340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.Contracts", "ToranjQ.Contracts\ToranjQ.Contracts.csproj", "{A03453EB-708B-4AFA-9162-04B2BA9226C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE9842C5-A767-4D21-9809-CB202EACDAC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE9842C5-A767-4D21-9809-CB202EACDAC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE9842C5-A767-4D21-9809-CB202EACDAC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE9842C5-A767-4D21-9809-CB202EACDAC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF450D78-020E-4234-BB18-A31295BEB340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF450D78-020E-4234-BB18-A31295BEB340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF450D78-020E-4234-BB18-A31295BEB340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF450D78-020E-4234-BB18-A31295BEB340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A03453EB-708B-4AFA-9162-04B2BA9226C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03453EB-708B-4AFA-9162-04B2BA9226C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03453EB-708B-4AFA-9162-04B2BA9226C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03453EB-708B-4AFA-9162-04B2BA9226C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
