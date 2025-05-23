@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.Contracts", "Toranj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.Api.Sdk", "ToranjQ.Api.Sdk\ToranjQ.Api.Sdk.csproj", "{F4D61391-5C66-4389-A2FB-EFB0703031A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.Api.Consumer", "ToranjQ.Api.Consumer\ToranjQ.Api.Consumer.csproj", "{7A04E1A8-8C37-49C5-8895-81ABD16CFDE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.Api.Sdk.Consumer", "ToranjQ.Api.Sdk.Consumer\ToranjQ.Api.Sdk.Consumer.csproj", "{7A04E1A8-8C37-49C5-8895-81ABD16CFDE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
