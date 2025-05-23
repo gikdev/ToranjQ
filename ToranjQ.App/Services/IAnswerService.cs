@@ -4,13 +4,13 @@ namespace ToranjQ.App.Services;
 
 public interface IAnswerService
 {
-    Task<bool> CreateAsync(Answer answer);
+    Task<bool> CreateAsync(Answer answer, CancellationToken token = default);
     
-    Task<Answer?> GetByIdAsync(Guid id);
+    Task<Answer?> GetByIdAsync(Guid id, CancellationToken token = default);
     
-    Task<IEnumerable<Answer>> GetAllAsync();
+    Task<IEnumerable<Answer>> GetAllAsync(CancellationToken token = default);
     
-    Task<Answer?> UpdateAsync(Answer answer);
+    Task<Answer?> UpdateAsync(Answer answer, CancellationToken token = default);
     
-    Task<bool> DeleteByIdAsync(Guid id);
+    Task<bool> DeleteByIdAsync(Guid id, CancellationToken token = default);
 }

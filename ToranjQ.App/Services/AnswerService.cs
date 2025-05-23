@@ -1,35 +1,38 @@
+using FluentValidation;
 using ToranjQ.App.Models;
 using ToranjQ.App.Repositories;
 
 namespace ToranjQ.App.Services;
 
-public class AnswerService(IAnswerRepo answerRepo) : IAnswerService
+public class AnswerService(IAnswerRepo answerRepo, IValidator<Answer> answerValidator) : IAnswerService
 {
-    public Task<bool> CreateAsync(Answer answer)
+    public async Task<bool> CreateAsync(Answer answer, CancellationToken token = default)
     {
-        return answerRepo.CreateAsync(answer);
+        await answerValidator.ValidateAndThrowAsync(answer, cancellationToken: token);
+        return await answerRepo.CreateAsync(answer, token);
     }
 
-    public Task<Answer?> GetByIdAsync(Guid id)
+    public Task<Answer?> GetByIdAsync(Guid id, CancellationToken token = default)
     {
-        return answerRepo.GetByIdAsync(id);
+        return answerRepo.GetByIdAsync(id, token);
     }
 
-    public Task<IEnumerable<Answer>> GetAllAsync()
+    public Task<IEnumerable<Answer>> GetAllAsync(CancellationToken token = default)
     {
-        return answerRepo.GetAllAsync();
+        return answerRepo.GetAllAsync(token);
     }
 
-    public async Task<Answer?> UpdateAsync(Answer answer)
+    public async Task<Answer?> UpdateAsync(Answer answer, CancellationToken token = default)
     {
-        var doesAnswerExist = await answerRepo.ExistsByIdAsync(answer.Id);
+        await answerValidator.ValidateAndThrowAsync(answer, cancellationToken: token);
+        var doesAnswerExist = await answerRepo.ExistsByIdAsync(answer.Id, token);
         if (!doesAnswerExist) return null;
-        await answerRepo.UpdateAsync(answer);
+        await answerRepo.UpdateAsync(answer, token);
         return answer;
     }
 
-    public Task<bool> DeleteByIdAsync(Guid id)
+    public Task<bool> DeleteByIdAsync(Guid id, CancellationToken token = default)
     {
-        return answerRepo.DeleteByIdAsync(id);
+        return answerRepo.DeleteByIdAsync(id, token);
     }
 }

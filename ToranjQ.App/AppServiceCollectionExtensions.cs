@@ -1,3 +1,4 @@
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using ToranjQ.App.Database;
 using ToranjQ.App.Repositories;
@@ -11,6 +12,7 @@ public static class AppServiceCollectionExtensions
     {
         services.AddSingleton<IAnswerRepo, AnswerRepo>();
         services.AddSingleton<IAnswerService, AnswerService>();
+        services.AddValidatorsFromAssemblyContaining<IApplicationMarker>(ServiceLifetime.Singleton);
         return services;
     }
 

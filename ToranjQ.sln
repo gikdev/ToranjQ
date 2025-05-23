@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.App", "ToranjQ.App\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.Contracts", "ToranjQ.Contracts\ToranjQ.Contracts.csproj", "{A03453EB-708B-4AFA-9162-04B2BA9226C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.Api.Sdk", "ToranjQ.Api.Sdk\ToranjQ.Api.Sdk.csproj", "{F4D61391-5C66-4389-A2FB-EFB0703031A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToranjQ.Api.Consumer", "ToranjQ.Api.Consumer\ToranjQ.Api.Consumer.csproj", "{7A04E1A8-8C37-49C5-8895-81ABD16CFDE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{A03453EB-708B-4AFA-9162-04B2BA9226C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A03453EB-708B-4AFA-9162-04B2BA9226C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A03453EB-708B-4AFA-9162-04B2BA9226C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D61391-5C66-4389-A2FB-EFB0703031A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D61391-5C66-4389-A2FB-EFB0703031A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D61391-5C66-4389-A2FB-EFB0703031A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D61391-5C66-4389-A2FB-EFB0703031A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A04E1A8-8C37-49C5-8895-81ABD16CFDE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A04E1A8-8C37-49C5-8895-81ABD16CFDE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A04E1A8-8C37-49C5-8895-81ABD16CFDE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A04E1A8-8C37-49C5-8895-81ABD16CFDE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

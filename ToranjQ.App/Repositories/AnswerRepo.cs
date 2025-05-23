@@ -5,44 +5,33 @@ using ToranjQ.App.Models;
 
 namespace ToranjQ.App.Repositories;
 
-public class AnswerRepo : IAnswerRepo
+public class AnswerRepo(IDbConnectionFactory dbConnectionFactory) : IAnswerRepo
 {
-    private readonly IDbConnectionFactory _dbConnectionFactory;
-
-    public AnswerRepo(IDbConnectionFactory dbConnectionFactory)
+    public async Task<bool> CreateAsync(Answer answer, CancellationToken token = default)
     {
-        _dbConnectionFactory = dbConnectionFactory;
-    }
-
-    public async Task<bool> CreateAsync(Answer answer)
-    {
-        using var connection = await _dbConnectionFactory.CreateConnectionAsync();
+        using var connection = await dbConnectionFactory.CreateConnectionAsync(token);
         using var transaction = connection.BeginTransaction();
         var insertAnswerCommand = new CommandDefinition("""
                                                         insert into answers (id, user_id, questionnaire_id, answer_str)
                                                         values (@Id, @UserId, @QuestionnaireId, @AnswerStr)
-                                                        """, answer);
+                                                        """, answer, cancellationToken: token);
         var result = await connection.ExecuteAsync(insertAnswerCommand);
         transaction.Commit();
         return result > 0;
     }
 
-    public async Task<Answer?> GetByIdAsync(Guid id)
+    public async Task<Answer?> GetByIdAsync(Guid id, CancellationToken token = default)
     {
-        using var connection = await _dbConnectionFactory.CreateConnectionAsync();
-        var getByIdCommand = new CommandDefinition("""
-                                                   select * from answers where id = @Id 
-                                                   """, new { id });
+        using var connection = await dbConnectionFactory.CreateConnectionAsync(token);
+        var getByIdCommand = new CommandDefinition("select * from answers where id = @Id", new { id }, cancellationToken: token);
         var answer = await connection.QuerySingleOrDefaultAsync<Answer>(getByIdCommand);
         return answer ?? null;
     }
 
-    public async Task<IEnumerable<Answer>> GetAllAsync()
+    public async Task<IEnumerable<Answer>> GetAllAsync(CancellationToken token = default)
     {
-        using var connection = await _dbConnectionFactory.CreateConnectionAsync();
-        var getAllCommand = new CommandDefinition("""
-                                                  select * from answers
-                                                  """);
+        using var connection = await dbConnectionFactory.CreateConnectionAsync(token);
+        var getAllCommand = new CommandDefinition("select * from answers", cancellationToken: token);
         var result = await connection.QueryAsync(getAllCommand);
         var finalResult = result.Select(a => new Answer
         {
@@ -54,9 +43,9 @@ public class AnswerRepo : IAnswerRepo
         return finalResult;
     }
 
-    public async Task<bool> UpdateAsync(Answer answer)
+    public async Task<bool> UpdateAsync(Answer answer, CancellationToken token = default)
     {
-        using var connection = await _dbConnectionFactory.CreateConnectionAsync();
+        using var connection = await dbConnectionFactory.CreateConnectionAsync(token);
         using var transaction = connection.BeginTransaction();
 
         var command = new CommandDefinition("""
@@ -66,7 +55,7 @@ public class AnswerRepo : IAnswerRepo
                                                 user_id = @UserId, 
                                                 questionnaire_id = @QuestionnaireId, 
                                             where id = @Id
-                                            """, answer);
+                                            """, answer, cancellationToken: token);
 
         var changesCount = await connection.ExecuteAsync(command);
         var result = changesCount > 0;
@@ -75,12 +64,12 @@ public class AnswerRepo : IAnswerRepo
         return result;
     }
 
-    public async Task<bool> DeleteByIdAsync(Guid id)
+    public async Task<bool> DeleteByIdAsync(Guid id, CancellationToken token = default)
     {
-        using var connection = await _dbConnectionFactory.CreateConnectionAsync();
+        using var connection = await dbConnectionFactory.CreateConnectionAsync(token);
         using var transaction = connection.BeginTransaction();
         
-        var command = new CommandDefinition("delete from answers where id = @Id", new { id });
+        var command = new CommandDefinition("delete from answers where id = @Id", new { id }, cancellationToken: token);
         var changesCount = await connection.ExecuteAsync(command);
         var result = changesCount > 0;
 
@@ -88,10 +77,10 @@ public class AnswerRepo : IAnswerRepo
         return result;
     }
 
-    public async Task<bool> ExistsByIdAsync(Guid id)
+    public async Task<bool> ExistsByIdAsync(Guid id, CancellationToken token = default)
     {
-        using var connection = await _dbConnectionFactory.CreateConnectionAsync();
-        var command = new CommandDefinition("select count(1) from answers where id = @Id", new { id });
+        using var connection = await dbConnectionFactory.CreateConnectionAsync(token);
+        var command = new CommandDefinition("select count(1) from answers where id = @Id", new { id }, cancellationToken: token);
         var result = await connection.ExecuteScalarAsync<bool>(command);
         return result;
     }
