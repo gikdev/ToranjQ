@@ -29,11 +29,15 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
+app.UseDefaultFiles();
+app.MapStaticAssets();
+app.MapFallbackToFile("/index.html");
 
+app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.UseMiddleware<ValidationMappingMiddleware>();
+
 app.MapControllers();
 
 var dbInitializer = app.Services.GetRequiredService<DbInitializer>();

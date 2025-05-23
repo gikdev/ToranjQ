@@ -7,13 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
-        <PackageReference Include="Scalar.AspNetCore" Version="2.4.2" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4"/>
+        <PackageReference Include="Scalar.AspNetCore" Version="2.4.2"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ToranjQ.App\ToranjQ.App.csproj" />
-      <ProjectReference Include="..\ToranjQ.Contracts\ToranjQ.Contracts.csproj" />
+        <ProjectReference Include="..\ToranjQ.App\ToranjQ.App.csproj"/>
+        <ProjectReference Include="..\ToranjQ.BlazorWasmUI\ToranjQ.BlazorWasmUI.csproj" />
+        <ProjectReference Include="..\ToranjQ.Contracts\ToranjQ.Contracts.csproj"/>
     </ItemGroup>
 
 </Project>
